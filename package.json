@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
+    "@tabler/icons-react": "^2.38.0",
     "chat.js": "^1.0.2",
     "next": "13.5.4",
     "react": "^18",
