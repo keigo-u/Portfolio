@@ -38,5 +38,5 @@ export const POST = async (req: Request, res: NextResponse) => {
     else console.log(info);
   });
 
-  return NextResponse.json({message: 'success'}, {status:200})
+  return NextResponse.json({ message: 'success' }, { status: 200 });
 };

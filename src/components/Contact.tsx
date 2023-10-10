@@ -4,45 +4,47 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 type FormData = {
-  name: string
-  email: string
-  body: string
-}
+  name: string;
+  email: string;
+  body: string;
+};
 
 const postContact = async (name: string, email: string, body: string) => {
   const res = await fetch(`http://localhost:3000/api/contact`, {
-    method: "POST",
-    body: JSON.stringify({name, email, body}),
+    method: 'POST',
+    body: JSON.stringify({ name, email, body }),
     headers: {
-      'ContentType': 'application/json'
-    }
-  })
+      ContentType: 'application/json',
+    },
+  });
 
-  return res.json()
-}
+  return res.json();
+};
 
 const Contact = () => {
-
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({
     mode: 'onChange',
     defaultValues: {
       name: '',
       email: '',
       body: '',
     },
-  })
+  });
 
   const onSubmit = handleSubmit((data: FormData) => {
-    toast.promise(
-      postContact(data.name, data.email, data.body), {
-        loading: 'メール送信中です...',
-        success: 'メールの送信に成功しました！',
-        error: 'メールの送信に失敗しました'
-      }
-    )
+    toast.promise(postContact(data.name, data.email, data.body), {
+      loading: 'メール送信中です...',
+      success: 'メールの送信に成功しました！',
+      error: 'メールの送信に失敗しました',
+    });
 
-    reset()
-  })
+    reset();
+  });
 
   return (
     <div className="my-3 bg-neutral-300 text-center rounded-3xl">
@@ -55,24 +57,30 @@ const Contact = () => {
       >
         <input
           type="text"
-          {...register('name', { required: '名前は必須項目です'})}
+          {...register('name', { required: '名前は必須項目です' })}
           placeholder="氏名"
           className="m-2 w-1/3 rounded focus:outline-gray-500"
         />
-        <span className='text-red-500 text-left w-1/3'>{errors.name?.message}</span>
+        <span className="text-red-500 text-left w-1/3">
+          {errors.name?.message}
+        </span>
         <input
           type="email"
-          {...register('email', { required: 'メールアドレスは必須項目です'})}
+          {...register('email', { required: 'メールアドレスは必須項目です' })}
           placeholder="メールアドレス"
           className="m-2 w-1/3 rounded focus:outline-gray-500"
         />
-        <span className='text-red-500 text-left w-1/3'>{errors.email?.message}</span>
+        <span className="text-red-500 text-left w-1/3">
+          {errors.email?.message}
+        </span>
         <textarea
-          {...register('body', { required: 'お問い合わせ内容は必須項目です'})}
+          {...register('body', { required: 'お問い合わせ内容は必須項目です' })}
           className="m-2 w-1/3 rounded focus:outline-gray-500"
           placeholder="お問い合わせ内容"
         ></textarea>
-        <span className='text-red-500 text-left w-1/3'>{errors.body?.message}</span>
+        <span className="text-red-500 text-left w-1/3">
+          {errors.body?.message}
+        </span>
         <input
           type="submit"
           value="送信"

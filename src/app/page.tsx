@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Link as Scroll} from 'react-scroll'
+import { Link as Scroll } from 'react-scroll';
 import iconImage from '../../public/icon.jpg';
 import jisui6Image from '../../public/jisui6.png';
 import soramojiImage from '../../public/soramoji.jpg';
@@ -32,20 +32,45 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50 flex flex-col items-center">
       {/* ヘッダーセクション */}
       <header className="w-4/5 m-5 p-5 flex justify-between bg-primary text-lg text-gray-50 rounded-full shadow-xl fixed top-0 z-50">
-        <Link href="/" className="font-semibold">keigo-uのポートフォリオ</Link>
+        <Link href="/" className="font-semibold">
+          keigo-uのポートフォリオ
+        </Link>
         <ul className="flex">
-          <li className="pr-4 hover:underline"><Scroll to='top' offset={-110} smooth>TOP</Scroll></li>
-          <li className="pr-4 hover:underline"><Scroll to='mylife' offset={-110} smooth>MyLife</Scroll></li>
-          <li className="pr-4 hover:underline"><Scroll to='skill' offset={-110} smooth>SKILL</Scroll></li>
-          <li className="pr-4 hover:underline"><Scroll to='works' offset={-110} smooth>WORKS</Scroll></li>
-          <li className="pr-4 hover:underline"><Scroll to='contact' offset={-110} smooth>CONTACT</Scroll></li>
+          <li className="pr-4 hover:underline">
+            <Scroll to="top" offset={-110} smooth>
+              TOP
+            </Scroll>
+          </li>
+          <li className="pr-4 hover:underline">
+            <Scroll to="mylife" offset={-110} smooth>
+              MyLife
+            </Scroll>
+          </li>
+          <li className="pr-4 hover:underline">
+            <Scroll to="skill" offset={-110} smooth>
+              SKILL
+            </Scroll>
+          </li>
+          <li className="pr-4 hover:underline">
+            <Scroll to="works" offset={-110} smooth>
+              WORKS
+            </Scroll>
+          </li>
+          <li className="pr-4 hover:underline">
+            <Scroll to="contact" offset={-110} smooth>
+              CONTACT
+            </Scroll>
+          </li>
         </ul>
       </header>
 
       {/* TOPセクション */}
-      <section id='top' className="w-4/5 m-5 mt-24 grid grid-rows-2 grid-cols-3 gap-5">
+      <section
+        id="top"
+        className="w-4/5 m-5 mt-24 grid grid-rows-2 grid-cols-3 gap-5"
+      >
         {/* Iconカード */}
-        <div className="p-4 row-span-2 bg-primary rounded-3xl flex flex-col items-center shodow-2xl">
+        <div className="p-4 row-span-2 bg-primary rounded-3xl flex flex-col items-center shodow-2xl hover:scale-[1.01]">
           <div className="text-secondary text-base w-full mb-20">Icon</div>
           <Image
             src={iconImage}
@@ -63,7 +88,7 @@ export default function Home() {
           </div>
         </div>
         {/* Profileカード */}
-        <div className="p-4 col-span-2 bg-primary rounded-3xl flex flex-col items-center shadow-2xl">
+        <div className="p-4 col-span-2 bg-primary rounded-3xl flex flex-col items-center shadow-2xl hover:scale-[1.01]">
           <div className="text-secondary text-base w-full">Profile</div>
           <div className="text-white text-xl m-8">
             現在沖縄に住んでいる大学4年生。小学生の頃からプログラミングに興味があり、
@@ -74,7 +99,7 @@ export default function Home() {
           </div>
         </div>
         {/* Worksカード */}
-        <div className="p-4 bg-primary rounded-3xl flex flex-col items-center shadow-2xl">
+        <div className="p-4 bg-primary rounded-3xl flex flex-col items-center shadow-2xl hover:scale-[1.01]">
           <div className="text-secondary text-base w-full">Works</div>
           <Splide
             aria-label="制作物の写真"
@@ -93,71 +118,91 @@ export default function Home() {
             <SplideSlide>
               <Image
                 src={soramojiImage}
-                alt="Jisui6画像"
+                alt="Soramoji画像"
+                className="object-cover w-full h-full rounded-md"
+              />
+            </SplideSlide>
+            <SplideSlide>
+              <Image
+                src={rmImage}
+                alt="ReportManager画像"
+                className="object-cover w-full h-full rounded-md"
+              />
+            </SplideSlide>
+            <SplideSlide>
+              <Image
+                src={vfImage}
+                alt="VirtualFitting画像"
                 className="object-cover w-full h-full rounded-md"
               />
             </SplideSlide>
           </Splide>
         </div>
         {/* Linksカード */}
-        <div className="p-4 bg-primary rounded-3xl flex flex-col items-center shadow-2xl">
+        <div className="p-4 bg-primary rounded-3xl flex flex-col items-center shadow-2xl hover:scale-[1.01]">
           <div className="text-secondary text-base w-full">Links</div>
           <div className="flex flex-start flex-wrap m-7 justify-center items-center">
             <a
               href="https://twitter.com/keigoQ4AXfu7z"
-              className="flex flex-col flex-start items-center mx-3"
+              className="flex flex-col flex-start items-center m-1 rounded hover:ring"
+              target="_blank"
+              rel="noreferrer noopener"
             >
               <Image
                 src="/icons8-twitterx-96.png"
-                width={96}
-                height={96}
+                width={80}
+                height={80}
                 alt="twitterIcon"
               />
-              <div className="text-white">@keigoQ4AXfu7z</div>
+              <div className="text-white text-sm">@keigoQ4AXfu7z</div>
             </a>
             <a
               href="https://www.instagram.com/k5.u_555/"
-              className="flex flex-col flex-start items-center mx-3"
+              className="flex flex-col flex-start items-center m-1 px-2 rounded hover:ring"
+              target="_blank"
+              rel="noreferrer noopener"
             >
               <Image
                 src="/icons8-インスタグラム-96.png"
-                width={96}
-                height={96}
+                width={80}
+                height={80}
                 alt="instagramIcon"
               />
-              <div className="text-white">@k5.u_555</div>
+              <div className="text-white text-sm">@k5.u_555</div>
             </a>
             <a
-              href="https://www.instagram.com/k5.u_555/"
-              className="flex flex-col flex-start items-center mx-3"
+              href="https://github.com/keigo-u"
+              className="flex flex-col flex-start items-center m-1 px-2 rounded hover:ring"
+              target="_blank"
+              rel="noreferrer noopener"
             >
               <Image
                 src="/icons8-github-100.png"
-                width={96}
-                height={96}
+                width={80}
+                height={80}
                 alt="githubIcon"
               />
-              <div className="text-white">@keigo-u</div>
+              <div className="text-white text-sm">@keigo-u</div>
             </a>
           </div>
         </div>
       </section>
 
       {/* 生い立ちセクション */}
-      <section id='mylife' className="w-4/5 m-5">
+      <section id="mylife" className="w-4/5 m-5">
         <div className="text-3xl font-bold drop-shadow-md">生い立ち MyLife</div>
         <LifeChart />
       </section>
 
       {/* スキルセットセクション */}
-      <section id='skill' className="w-4/5 m-5">
+      <section id="skill" className="w-4/5 m-5">
         <div className="text-3xl font-bold drop-shadow-md">
           スキルセット SKILL
         </div>
 
         <div className="grid grid-rows-2 grid-cols-3 gap-5 m-3">
           {/* フロントエンド */}
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3">
+          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconDeviceDesktop width={30} height={30} />
               <div className="text-3xl">フロントエンド</div>
@@ -219,7 +264,7 @@ export default function Home() {
           </div>
 
           {/* バックエンド */}
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3">
+          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconServer width={30} height={30} />
               <div className="text-3xl">バックエンド</div>
@@ -251,7 +296,7 @@ export default function Home() {
           </div>
 
           {/* モバイル */}
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3">
+          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4 w-full">
               <IconDeviceMobile width={30} height={30} />
               <div className="text-3xl">モバイル</div>
@@ -288,7 +333,7 @@ export default function Home() {
           </div>
 
           {/* データベース */}
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3">
+          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconDatabase width={30} height={30} />
               <div className="text-3xl">データベース</div>
@@ -320,7 +365,7 @@ export default function Home() {
           </div>
 
           {/* その他 */}
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3">
+          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconTool width={30} height={30} />
               <div className="text-3xl">その他</div>
@@ -354,7 +399,7 @@ export default function Home() {
           </div>
 
           {/* 保有資格 */}
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3">
+          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconId width={30} height={30} />
               <div className="text-3xl">保有資格</div>
@@ -369,12 +414,12 @@ export default function Home() {
       </section>
 
       {/* 制作物セクション */}
-      <section id='works' className="w-4/5 m-5">
+      <section id="works" className="w-4/5 m-5">
         <div className="text-3xl font-bold drop-shadow-md">制作物 WORKS</div>
 
         <div className="grid grid-rows-2 grid-cols-2 gap-5 my-3">
           {/* Jisui6 */}
-          <div className="bg-primary rounded-3xl p-4">
+          <div className="bg-primary rounded-3xl p-4 hover:scale-[1.01]">
             <div className="text-3xl text-secondary font-bold">Jisui6</div>
             <div className="flex justify-around m-2">
               <div className="flex flex-wrap items-start">
@@ -430,7 +475,11 @@ export default function Home() {
               また他の人の投稿を見ることができ、料理のアイデアを得ることができます。
             </div>
             <div className="my-2 text-right text-orange-400 text-sm underline hover:text-orange-300">
-              <a href="https://jisui6-700305e97f73.herokuapp.com/">
+              <a
+                href="https://jisui6-700305e97f73.herokuapp.com/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 {'>>'}リンクはこちら
               </a>
             </div>
@@ -446,7 +495,7 @@ export default function Home() {
           </div>
 
           {/* Soramoji */}
-          <div className="bg-primary rounded-3xl p-4">
+          <div className="bg-primary rounded-3xl p-4 hover:scale-[1.01]">
             <div className="text-3xl text-secondary font-bold">Soramoji</div>
             <div className="flex justify-around m-2">
               <div className="flex flex-wrap items-start">
@@ -489,19 +538,27 @@ export default function Home() {
               体を使って学習を進めることで楽しく効率的に覚えることができます。
             </div>
             <div className="my-2 text-right text-orange-400 text-sm underline hover:text-orange-300">
-              <a href="https://main.d3ur3rakiel3gv.amplifyapp.com/">
+              <a
+                href="https://main.d3ur3rakiel3gv.amplifyapp.com/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 {'>>'}リンクはこちら
               </a>
             </div>
             <div className="my-2 text-right text-orange-400 text-sm underline hover:text-orange-300">
-              <a href="https://github.com/keigo-u/Soramoji">
+              <a
+                href="https://github.com/keigo-u/Soramoji"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 {'>>'}GitHubリポジトリはこちら
               </a>
             </div>
           </div>
 
           {/* ReportManager */}
-          <div className="bg-primary rounded-3xl p-4">
+          <div className="bg-primary rounded-3xl p-4 hover:scale-[1.01]">
             <div className="text-3xl text-secondary font-bold">
               ReportManager
             </div>
@@ -520,13 +577,7 @@ export default function Home() {
                   alt="mongodb"
                 />
               </div>
-              <Image
-                src={rmImage}
-                alt="ReportManager"
-                width={400}
-                height={280}
-                className="rounded-md"
-              />
+              <Image src={rmImage} alt="ReportManager" className="rounded-md" />
             </div>
             <div className="text-white mx-8 my-2 font-semibold">
               時間割、課題管理と大学生に必須な機能を備えたアプリです。
@@ -534,14 +585,18 @@ export default function Home() {
               ができ、詳細を記入せずとも自分のタスクとして追加することができます。
             </div>
             <div className="my-2 text-right text-orange-400 text-sm underline hover:text-orange-300">
-              <a href="https://github.com/keigo-u/ReportManager">
+              <a
+                href="https://github.com/keigo-u/ReportManager"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 {'>>'}GitHubリポジトリはこちら
               </a>
             </div>
           </div>
 
           {/* VirtualFitting */}
-          <div className="bg-primary rounded-3xl p-4">
+          <div className="bg-primary rounded-3xl p-4 hover:scale-[1.01]">
             <div className="text-3xl text-secondary font-bold">
               VirtualFitting
             </div>
@@ -569,7 +624,11 @@ export default function Home() {
               少ないスペースでバーチャルフィッティングを行うことができます。
             </div>
             <div className="my-2 text-right text-orange-400 text-sm underline hover:text-orange-300">
-              <a href="https://github.com/keigo-u/VirtualFitting">
+              <a
+                href="https://github.com/keigo-u/VirtualFitting"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 {'>>'}GitHubリポジトリはこちら
               </a>
             </div>
@@ -578,7 +637,7 @@ export default function Home() {
       </section>
 
       {/* お問い合わせセクション */}
-      <section id='contact' className="w-4/5 m-5">
+      <section id="contact" className="w-4/5 m-5">
         <div className="text-3xl font-bold drop-shadow-md">
           お問い合わせ CONTACT
         </div>
@@ -587,14 +646,26 @@ export default function Home() {
 
       {/* フッターセクション */}
       <footer className="w-4/5 m-5 p-5 flex justify-between items-center bg-primary rounded-full shadow-xl">
-        <div className="font-semibold text-lg text-gray-50">keigo-uのポートフォリオ</div>
+        <Link href="/" className="font-semibold text-lg text-gray-50">
+          keigo-uのポートフォリオ
+        </Link>
         <div>
           <div>all rights reserved. @2023</div>
-          <div className='text-right text-sm'>Icons by <a href='https://icons8.jp/' className='underline'>Icons8</a></div>
+          <div className="text-right text-sm">
+            Icons by{' '}
+            <a
+              href="https://icons8.jp/"
+              className="underline"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Icons8
+            </a>
+          </div>
         </div>
       </footer>
 
-      <Toaster position='top-right'/>
+      <Toaster position="top-right" />
     </main>
   );
 }
