@@ -4,7 +4,6 @@ import nodemailer from 'nodemailer';
 // お問い合わせメール送信API
 export const POST = async (req: Request, res: NextResponse) => {
   const { name, email, body } = await req.json();
-  console.log({ name, email, body });
 
   const trasporter = nodemailer.createTransport({
     // host: 'smtp.google.com',
@@ -33,10 +32,10 @@ export const POST = async (req: Request, res: NextResponse) => {
     `,
   };
 
-  await trasporter.sendMail(toHostMailData, function (err, info) {
-    if (err) console.log(err);
-    else console.log(info);
+  const msg = await trasporter.sendMail(toHostMailData, function (err, info) {
+    if (err) return err;
+    else return info
   });
 
-  return NextResponse.json({ message: 'success' }, { status: 200 });
+  return NextResponse.json({ message: msg }, { status: 200 });
 };
