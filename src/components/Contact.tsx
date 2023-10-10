@@ -10,7 +10,7 @@ type FormData = {
 };
 
 const postContact = async (name: string, email: string, body: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/contact`, {
+  const res = await fetch(`api/contact`, {
     method: 'POST',
     body: JSON.stringify({ name, email, body }),
     headers: {
