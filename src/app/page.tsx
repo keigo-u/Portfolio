@@ -1,5 +1,7 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Link as Scroll} from 'react-scroll'
 import iconImage from '../../public/icon.jpg';
 import jisui6Image from '../../public/jisui6.png';
 import soramojiImage from '../../public/soramoji.jpg';
@@ -7,7 +9,6 @@ import rmImage from '../../public/reportmanager_connected.png';
 import vfImage from '../../public/virtualfitting_icon.png';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/css';
-import MyLife from '@/components/LifeChart';
 import LifeChart from '@/components/LifeChart';
 import {
   IconDatabase,
@@ -30,18 +31,19 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col items-center">
       {/* ヘッダーセクション */}
-      <header className="w-4/5 m-5 p-5 flex justify-between bg-primary text-lg text-gray-50 rounded-full shadow-xl">
-        <div className="font-semibold">keigo-uのポートフォリオ</div>
+      <header className="w-4/5 m-5 p-5 flex justify-between bg-primary text-lg text-gray-50 rounded-full shadow-xl fixed top-0 z-50">
+        <Link href="/" className="font-semibold">keigo-uのポートフォリオ</Link>
         <ul className="flex">
-          <li className="pr-4">MyLife</li>
-          <li className="pr-4">SKILL</li>
-          <li className="pr-4">WORKS</li>
-          <li className="pr-4">CONTACT</li>
+          <li className="pr-4 hover:underline"><Scroll to='top' offset={-110} smooth>TOP</Scroll></li>
+          <li className="pr-4 hover:underline"><Scroll to='mylife' offset={-110} smooth>MyLife</Scroll></li>
+          <li className="pr-4 hover:underline"><Scroll to='skill' offset={-110} smooth>SKILL</Scroll></li>
+          <li className="pr-4 hover:underline"><Scroll to='works' offset={-110} smooth>WORKS</Scroll></li>
+          <li className="pr-4 hover:underline"><Scroll to='contact' offset={-110} smooth>CONTACT</Scroll></li>
         </ul>
       </header>
 
       {/* TOPセクション */}
-      <section className="w-4/5 m-5 grid grid-rows-2 grid-cols-3 gap-5">
+      <section id='top' className="w-4/5 m-5 mt-24 grid grid-rows-2 grid-cols-3 gap-5">
         {/* Iconカード */}
         <div className="p-4 row-span-2 bg-primary rounded-3xl flex flex-col items-center shodow-2xl">
           <div className="text-secondary text-base w-full mb-20">Icon</div>
@@ -100,10 +102,10 @@ export default function Home() {
         {/* Linksカード */}
         <div className="p-4 bg-primary rounded-3xl flex flex-col items-center shadow-2xl">
           <div className="text-secondary text-base w-full">Links</div>
-          <div className="flex flex-start m-7">
+          <div className="flex flex-start flex-wrap m-7 justify-center items-center">
             <a
               href="https://twitter.com/keigoQ4AXfu7z"
-              className="flex flex-col items-center mx-3"
+              className="flex flex-col flex-start items-center mx-3"
             >
               <Image
                 src="/icons8-twitterx-96.png"
@@ -115,7 +117,7 @@ export default function Home() {
             </a>
             <a
               href="https://www.instagram.com/k5.u_555/"
-              className="flex flex-col items-center mx-3"
+              className="flex flex-col flex-start items-center mx-3"
             >
               <Image
                 src="/icons8-インスタグラム-96.png"
@@ -123,20 +125,32 @@ export default function Home() {
                 height={96}
                 alt="instagramIcon"
               />
-              <div className="text-white">@kgo_fashion</div>
+              <div className="text-white">@k5.u_555</div>
+            </a>
+            <a
+              href="https://www.instagram.com/k5.u_555/"
+              className="flex flex-col flex-start items-center mx-3"
+            >
+              <Image
+                src="/icons8-github-100.png"
+                width={96}
+                height={96}
+                alt="githubIcon"
+              />
+              <div className="text-white">@keigo-u</div>
             </a>
           </div>
         </div>
       </section>
 
       {/* 生い立ちセクション */}
-      <section className="w-4/5 m-5">
+      <section id='mylife' className="w-4/5 m-5">
         <div className="text-3xl font-bold drop-shadow-md">生い立ち MyLife</div>
         <LifeChart />
       </section>
 
       {/* スキルセットセクション */}
-      <section className="w-4/5 m-5">
+      <section id='skill' className="w-4/5 m-5">
         <div className="text-3xl font-bold drop-shadow-md">
           スキルセット SKILL
         </div>
@@ -355,7 +369,7 @@ export default function Home() {
       </section>
 
       {/* 制作物セクション */}
-      <section className="w-4/5 m-5">
+      <section id='works' className="w-4/5 m-5">
         <div className="text-3xl font-bold drop-shadow-md">制作物 WORKS</div>
 
         <div className="grid grid-rows-2 grid-cols-2 gap-5 my-3">
@@ -564,12 +578,21 @@ export default function Home() {
       </section>
 
       {/* お問い合わせセクション */}
-      <section className="w-4/5 m-5">
+      <section id='contact' className="w-4/5 m-5">
         <div className="text-3xl font-bold drop-shadow-md">
           お問い合わせ CONTACT
         </div>
         <Contact />
       </section>
+
+      {/* フッターセクション */}
+      <footer className="w-4/5 m-5 p-5 flex justify-between items-center bg-primary rounded-full shadow-xl">
+        <div className="font-semibold text-lg text-gray-50">keigo-uのポートフォリオ</div>
+        <div>
+          <div>all rights reserved. @2023</div>
+          <div className='text-right text-sm'>Icons by <a href='https://icons8.jp/' className='underline'>Icons8</a></div>
+        </div>
+      </footer>
 
       <Toaster position='top-right'/>
     </main>
