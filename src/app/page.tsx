@@ -20,6 +20,7 @@ import {
 } from '@tabler/icons-react';
 import Contact from '@/components/Contact';
 import { Toaster } from 'react-hot-toast';
+import { FadeInBottom } from '@/components/FadeInBottom';
 
 const createLevelStars = (num: number): string => {
   var stars = '☆☆☆☆☆';
@@ -202,68 +203,71 @@ export default function Home() {
 
         <div className="grid grid-rows-2 grid-cols-3 gap-5 m-3">
           {/* フロントエンド */}
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
-            <div className="flex justify-center items-center mx-2 my-4">
-              <IconDeviceDesktop width={30} height={30} />
-              <div className="text-3xl">フロントエンド</div>
+          <FadeInBottom>
+            <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
+              <div className="flex justify-center items-center mx-2 my-4">
+                <IconDeviceDesktop width={30} height={30} />
+                <div className="text-3xl">フロントエンド</div>
+              </div>
+              <div className="text-white my-4">
+                直近ではNext.JSを用いた開発を行っていました
+              </div>
+              <table className="w-full my-4">
+                <thead>
+                  <tr>
+                    <th>技術</th>
+                    <th>経験年数</th>
+                    <th>レベル</th>
+                  </tr>
+                </thead>
+                <tbody className="text-white">
+                  <tr>
+                    <td>HTML</td>
+                    <td>2年</td>
+                    <td>★★★☆☆</td>
+                  </tr>
+                  <tr>
+                    <td>Tailwind</td>
+                    <td>1年</td>
+                    <td>★★★☆☆</td>
+                  </tr>
+                  <tr>
+                    <td>JavaScript</td>
+                    <td>2年</td>
+                    <td>★★★★☆</td>
+                  </tr>
+                  <tr>
+                    <td>JavaScript</td>
+                    <td>2年</td>
+                    <td>★★★★☆</td>
+                  </tr>
+                  <tr>
+                    <td>TypeScript</td>
+                    <td>半年</td>
+                    <td>★★★☆☆</td>
+                  </tr>
+                  <tr>
+                    <td>jQuery</td>
+                    <td>半年</td>
+                    <td>★★☆☆☆</td>
+                  </tr>
+                  <tr>
+                    <td>React</td>
+                    <td>半年</td>
+                    <td>★★★☆☆</td>
+                  </tr>
+                  <tr>
+                    <td>Next.JS</td>
+                    <td>半年</td>
+                    <td>★☆☆☆☆</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div className="text-white my-4">
-              直近ではNext.JSを用いた開発を行っていました
-            </div>
-            <table className="w-full my-4">
-              <thead>
-                <tr>
-                  <th>技術</th>
-                  <th>経験年数</th>
-                  <th>レベル</th>
-                </tr>
-              </thead>
-              <tbody className="text-white">
-                <tr>
-                  <td>HTML</td>
-                  <td>2年</td>
-                  <td>★★★☆☆</td>
-                </tr>
-                <tr>
-                  <td>Tailwind</td>
-                  <td>1年</td>
-                  <td>★★★☆☆</td>
-                </tr>
-                <tr>
-                  <td>JavaScript</td>
-                  <td>2年</td>
-                  <td>★★★★☆</td>
-                </tr>
-                <tr>
-                  <td>JavaScript</td>
-                  <td>2年</td>
-                  <td>★★★★☆</td>
-                </tr>
-                <tr>
-                  <td>TypeScript</td>
-                  <td>半年</td>
-                  <td>★★★☆☆</td>
-                </tr>
-                <tr>
-                  <td>jQuery</td>
-                  <td>半年</td>
-                  <td>★★☆☆☆</td>
-                </tr>
-                <tr>
-                  <td>React</td>
-                  <td>半年</td>
-                  <td>★★★☆☆</td>
-                </tr>
-                <tr>
-                  <td>Next.JS</td>
-                  <td>半年</td>
-                  <td>★☆☆☆☆</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          </FadeInBottom>
 
           {/* バックエンド */}
+          <FadeInBottom>
           <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconServer width={30} height={30} />
@@ -294,8 +298,10 @@ export default function Home() {
               </tbody>
             </table>
           </div>
+          </FadeInBottom>
 
           {/* モバイル */}
+          <FadeInBottom>
           <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4 w-full">
               <IconDeviceMobile width={30} height={30} />
@@ -331,8 +337,10 @@ export default function Home() {
               </tbody>
             </table>
           </div>
+          </FadeInBottom>
 
           {/* データベース */}
+          <FadeInBottom>
           <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconDatabase width={30} height={30} />
@@ -363,8 +371,10 @@ export default function Home() {
               </tbody>
             </table>
           </div>
+          </FadeInBottom>
 
           {/* その他 */}
+          <FadeInBottom>
           <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconTool width={30} height={30} />
@@ -397,8 +407,9 @@ export default function Home() {
               </tbody>
             </table>
           </div>
-
+          </FadeInBottom>
           {/* 保有資格 */}
+          <FadeInBottom>
           <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconId width={30} height={30} />
@@ -410,6 +421,7 @@ export default function Home() {
               <li>普通自動車第一種運転免許（AT限定）</li>
             </ul>
           </div>
+          </FadeInBottom>
         </div>
       </section>
 
@@ -417,6 +429,7 @@ export default function Home() {
       <section id="works" className="w-4/5 m-5">
         <div className="text-3xl font-bold drop-shadow-md">制作物 WORKS</div>
 
+        <FadeInBottom>
         <div className="grid grid-rows-2 grid-cols-2 gap-5 my-3">
           {/* Jisui6 */}
           <div className="bg-primary rounded-3xl p-4 hover:scale-[1.01]">
@@ -634,6 +647,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </FadeInBottom>
       </section>
 
       {/* お問い合わせセクション */}

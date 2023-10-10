@@ -10,7 +10,7 @@ type FormData = {
 };
 
 const postContact = async (name: string, email: string, body: string) => {
-  const res = await fetch(`http://localhost:3000/api/contact`, {
+  const res = await fetch(`${process.env.APP_URL}/api/contact`, {
     method: 'POST',
     body: JSON.stringify({ name, email, body }),
     headers: {
