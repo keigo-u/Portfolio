@@ -15,12 +15,16 @@ import {
   IconDeviceDesktop,
   IconDeviceMobile,
   IconId,
+  IconMenu2,
   IconServer,
+  IconSquareRoundedX,
   IconTool,
 } from '@tabler/icons-react';
 import Contact from '@/components/Contact';
 import { Toaster } from 'react-hot-toast';
 import { FadeInBottom } from '@/components/FadeInBottom';
+import { useState } from 'react';
+import { createSocket } from 'dgram';
 
 const createLevelStars = (num: number): string => {
   var stars = '☆☆☆☆☆';
@@ -29,14 +33,26 @@ const createLevelStars = (num: number): string => {
 };
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+
+  const toggleIsMenuOpen = () => {
+    setIsMenuOpen((prev) => {
+      if (!prev) {
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "scroll";
+      }
+      return !prev
+    })
+  }
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center">
+    <div id='content' className="min-h-screen min-w-full bg-gray-50 flex flex-col items-center box-border">
       {/* ヘッダーセクション */}
-      <header className="w-4/5 m-5 p-5 flex justify-between bg-primary text-lg text-gray-50 rounded-full shadow-xl fixed top-0 z-50">
+      <header className="w-4/5 m-5 p-5 flex justify-between bg-primary md:text-lg text-gray-50 rounded-full shadow-xl fixed top-0 z-10">
         <Link href="/" className="font-semibold">
           keigo-uのポートフォリオ
         </Link>
-        <ul className="flex">
+        <ul className="md:flex hidden">
           <li className="pr-4 hover:underline">
             <Scroll to="top" offset={-110} smooth>
               TOP
@@ -63,16 +79,55 @@ export default function Home() {
             </Scroll>
           </li>
         </ul>
+
+        <button className='md:hidden' onClick={toggleIsMenuOpen}>
+          <IconMenu2 />
+        </button>
       </header>
+      {isMenuOpen ? (
+        <div className='fixed top-0 left-0 z-20 bg-primary min-h-screen min-w-full flex flex-col'>
+          {/* <button onClick={toggleIsMenuOpen} className='absolute top-0 m-8 z-20'>
+            <IconSquareRoundedX width={50} height={50} className='text-white font-thin'/>
+          </button>
+
+          <ul className="flex flex-col mb-20 absolute bottom-0 text-2xl text-white font-bold text-right">
+            <li className="p-4 text-xl hover:underline">
+              <Scroll to="top" offset={-110} smooth>
+                トップ TOP
+              </Scroll>
+            </li>
+            <li className="p-4 text-xl hover:underline">
+              <Scroll to="mylife" offset={-110} smooth>
+                生い立ち MyLife
+              </Scroll>
+            </li>
+            <li className="p-4 text-xl hover:underline">
+              <Scroll to="skill" offset={-110} smooth>
+                スキルセット SKILL
+              </Scroll>
+            </li>
+            <li className="p-4 text-xl hover:underline">
+              <Scroll to="works" offset={-110} smooth>
+                成果物 WORKS
+              </Scroll>
+            </li>
+            <li className="p-4 text-xl hover:underline">
+              <Scroll to="contact" offset={-110} smooth>
+                お問い合わせ CONTACT
+              </Scroll>
+            </li>
+          </ul> */}
+        </div>
+      ) : undefined}
 
       {/* TOPセクション */}
       <section
         id="top"
-        className="w-4/5 m-5 mt-24 grid grid-rows-2 grid-cols-3 gap-5"
+        className="w-4/5 m-5 mt-24 md:grid md:grid-rows-2 md:grid-cols-3 gap-3 md:gap-5 box-border"
       >
         {/* Iconカード */}
-        <div className="p-4 row-span-2 bg-primary rounded-3xl flex flex-col items-center shodow-2xl hover:scale-[1.01]">
-          <div className="text-secondary text-base w-full mb-20">Icon</div>
+        <div className="my-3 p-4 row-span-2 bg-primary rounded-3xl flex flex-col items-center shodow-2xl hover:scale-[1.01]">
+          <div className="text-secondary text-base w-full md:mb-20">Icon</div>
           <Image
             src={iconImage}
             height={120}
@@ -80,7 +135,7 @@ export default function Home() {
             alt="アイコン画像"
             className="rounded-full m-5"
           />
-          <div className="text-white text-xl m-5">
+          <div className="text-white md:text-xl md:m-5 text-sm md:text-md">
             こんにちは。<div className="font-bold inline">keigo-u</div>は<br />
             Webアプリ、iOSアプリを
             <br />
@@ -89,9 +144,9 @@ export default function Home() {
           </div>
         </div>
         {/* Profileカード */}
-        <div className="p-4 col-span-2 bg-primary rounded-3xl flex flex-col items-center shadow-2xl hover:scale-[1.01]">
+        <div className="my-3 p-4 col-span-2 bg-primary rounded-3xl flex flex-col items-center shadow-2xl hover:scale-[1.01]">
           <div className="text-secondary text-base w-full">Profile</div>
-          <div className="text-white text-xl m-8">
+          <div className="text-white md:text-xl md:m-8">
             現在沖縄に住んでいる大学4年生。小学生の頃からプログラミングに興味があり、
             高専にて情報学を学びました。その後大学に編入し、プログラミングスクールの
             メンターとしてアルバイトをこなしながら個人開発を行っています。
@@ -100,7 +155,7 @@ export default function Home() {
           </div>
         </div>
         {/* Worksカード */}
-        <div className="p-4 bg-primary rounded-3xl flex flex-col items-center shadow-2xl hover:scale-[1.01]">
+        <div className="my-3 p-4 bg-primary rounded-3xl flex flex-col items-center shadow-2xl hover:scale-[1.01] col-span-2 md:col-span-1">
           <div className="text-secondary text-base w-full">Works</div>
           <Splide
             aria-label="制作物の写真"
@@ -113,7 +168,7 @@ export default function Home() {
               <Image
                 src={jisui6Image}
                 alt="Jisui6画像"
-                className="object-cover w-full h-full rounded-md"
+                className="object-cover w-full md:h-full rounded-md"
               />
             </SplideSlide>
             <SplideSlide>
@@ -140,7 +195,7 @@ export default function Home() {
           </Splide>
         </div>
         {/* Linksカード */}
-        <div className="p-4 bg-primary rounded-3xl flex flex-col items-center shadow-2xl hover:scale-[1.01]">
+        <div className="my-3 p-4 bg-primary rounded-3xl flex flex-col items-center shadow-2xl hover:scale-[1.01] md:col-span-1">
           <div className="text-secondary text-base w-full">Links</div>
           <div className="flex flex-start flex-wrap m-7 justify-center items-center">
             <a
@@ -154,6 +209,7 @@ export default function Home() {
                 width={80}
                 height={80}
                 alt="twitterIcon"
+                sizes='20%'
               />
               <div className="text-white text-sm">@keigoQ4AXfu7z</div>
             </a>
@@ -168,6 +224,7 @@ export default function Home() {
                 width={80}
                 height={80}
                 alt="instagramIcon"
+                sizes='50%'
               />
               <div className="text-white text-sm">@k5.u_555</div>
             </a>
@@ -182,6 +239,7 @@ export default function Home() {
                 width={80}
                 height={80}
                 alt="githubIcon"
+                sizes='50%'
               />
               <div className="text-white text-sm">@keigo-u</div>
             </a>
@@ -196,20 +254,20 @@ export default function Home() {
       </section>
 
       {/* スキルセットセクション */}
-      <section id="skill" className="w-4/5 m-5">
+      <section id="skill" className="w-4/5 m-5 box-border">
         <div className="text-3xl font-bold drop-shadow-md">
           スキルセット SKILL
         </div>
 
-        <div className="grid grid-rows-2 grid-cols-3 gap-5 m-3">
+        <div className="md:grid md:grid-rows-2 md:grid-cols-3 md:gap-5">
           {/* フロントエンド */}
           <FadeInBottom>
-            <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
+            <div className="bg-primary rounded-3xl text-center text-secondary my-3 p-3 hover:scale-[1.01]">
               <div className="flex justify-center items-center mx-2 my-4">
                 <IconDeviceDesktop width={30} height={30} />
-                <div className="text-3xl">フロントエンド</div>
+                <div className="text-xl md:text-3xl">フロントエンド</div>
               </div>
-              <div className="text-white my-4">
+              <div className="text-white text-sm md:text-base my-4">
                 直近ではNext.JSを用いた開発を行っていました
               </div>
               <table className="w-full my-4">
@@ -268,12 +326,12 @@ export default function Home() {
 
           {/* バックエンド */}
           <FadeInBottom>
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
+          <div className="bg-primary rounded-3xl text-center text-secondary my-3 p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconServer width={30} height={30} />
-              <div className="text-3xl">バックエンド</div>
+              <div className="text-xl md:text-3xl">バックエンド</div>
             </div>
-            <div className="text-white my-4">
+            <div className="text-white text-sm md:text-base my-4">
               アルバイトではLaravelアプリ開発を教えています
             </div>
             <table className="w-full my-4">
@@ -302,12 +360,12 @@ export default function Home() {
 
           {/* モバイル */}
           <FadeInBottom>
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
+          <div className="bg-primary rounded-3xl text-center text-secondary my-3 p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4 w-full">
               <IconDeviceMobile width={30} height={30} />
-              <div className="text-3xl">モバイル</div>
+              <div className="text-xl md:text-3xl">モバイル</div>
             </div>
-            <div className="text-white my-4">
+            <div className="text-white text-sm md:text-base my-4">
               直近ではSwift UIを用いた開発を行っていました
             </div>
             <table className="w-full my-4">
@@ -341,12 +399,12 @@ export default function Home() {
 
           {/* データベース */}
           <FadeInBottom>
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
+          <div className="bg-primary rounded-3xl text-center text-secondary my-3 p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconDatabase width={30} height={30} />
-              <div className="text-3xl">データベース</div>
+              <div className="text-xl md:text-3xl">データベース</div>
             </div>
-            <div className="text-white my-4">
+            <div className="text-white text-sm md:text-base my-4">
               直近ではmysqlを用いた開発を行っていました
             </div>
             <table className="w-full my-4">
@@ -375,10 +433,10 @@ export default function Home() {
 
           {/* その他 */}
           <FadeInBottom>
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
+          <div className="bg-primary rounded-3xl text-center text-secondary my-3 p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconTool width={30} height={30} />
-              <div className="text-3xl">その他</div>
+              <div className="text-xl md:text-3xl">その他</div>
             </div>
             <table className="w-full my-4">
               <thead>
@@ -410,10 +468,10 @@ export default function Home() {
           </FadeInBottom>
           {/* 保有資格 */}
           <FadeInBottom>
-          <div className="bg-primary rounded-3xl text-center text-secondary p-3 hover:scale-[1.01]">
+          <div className="bg-primary rounded-3xl text-center text-secondary my-3 p-3 hover:scale-[1.01]">
             <div className="flex justify-center items-center mx-2 my-4">
               <IconId width={30} height={30} />
-              <div className="text-3xl">保有資格</div>
+              <div className="text-xl md:text-3xl">保有資格</div>
             </div>
             <ul className="mx-4 my-8 text-left text-white">
               <li>基本情報技術者試験</li>
@@ -430,11 +488,11 @@ export default function Home() {
         <div className="text-3xl font-bold drop-shadow-md">制作物 WORKS</div>
 
         <FadeInBottom>
-        <div className="grid grid-rows-2 grid-cols-2 gap-5 my-3">
+        <div className="md:grid md:grid-rows-2 md:grid-cols-2 md:gap-5 my-3">
           {/* Jisui6 */}
-          <div className="bg-primary rounded-3xl p-4 hover:scale-[1.01]">
+          <div className="bg-primary rounded-3xl my-3 p-4 hover:scale-[1.01]">
             <div className="text-3xl text-secondary font-bold">Jisui6</div>
-            <div className="flex justify-around m-2">
+            <div className="md:flex md:justify-around m-2">
               <div className="flex flex-wrap items-start">
                 <Image
                   src="/icons8-php-96.png"
@@ -508,9 +566,9 @@ export default function Home() {
           </div>
 
           {/* Soramoji */}
-          <div className="bg-primary rounded-3xl p-4 hover:scale-[1.01]">
+          <div className="bg-primary rounded-3xl my-3 p-4 hover:scale-[1.01]">
             <div className="text-3xl text-secondary font-bold">Soramoji</div>
-            <div className="flex justify-around m-2">
+            <div className="md:flex md:justify-around m-2">
               <div className="flex flex-wrap items-start">
                 <Image
                   src="/icons8-typescript-96.png"
@@ -571,11 +629,11 @@ export default function Home() {
           </div>
 
           {/* ReportManager */}
-          <div className="bg-primary rounded-3xl p-4 hover:scale-[1.01]">
+          <div className="bg-primary rounded-3xl my-3 p-4 hover:scale-[1.01]">
             <div className="text-3xl text-secondary font-bold">
               ReportManager
             </div>
-            <div className="flex justify-around m-2">
+            <div className="md:flex md:justify-around m-2">
               <div className="flex flex-wrap items-start">
                 <Image
                   src="/icons8-swiftui-96.png"
@@ -609,11 +667,11 @@ export default function Home() {
           </div>
 
           {/* VirtualFitting */}
-          <div className="bg-primary rounded-3xl p-4 hover:scale-[1.01]">
+          <div className="bg-primary rounded-3xl my-3 p-4 hover:scale-[1.01]">
             <div className="text-3xl text-secondary font-bold">
               VirtualFitting
             </div>
-            <div className="flex justify-around m-2">
+            <div className="md:flex md:justify-around m-2">
               <div className="flex flex-wrap items-start">
                 <Image
                   src="/icons8-swift-96.png"
@@ -660,12 +718,12 @@ export default function Home() {
 
       {/* フッターセクション */}
       <footer className="w-4/5 m-5 p-5 flex justify-between items-center bg-primary rounded-full shadow-xl">
-        <Link href="/" className="font-semibold text-lg text-gray-50">
+        <Link href="/" className="hidden md:block font-semibold text-lg text-gray-50">
           keigo-uのポートフォリオ
         </Link>
-        <div>
+        <div className='w-full md:w-auto text-right'>
           <div>all rights reserved. @2023</div>
-          <div className="text-right text-sm">
+          <div className="text-sm">
             Icons by{' '}
             <a
               href="https://icons8.jp/"
@@ -680,6 +738,6 @@ export default function Home() {
       </footer>
 
       <Toaster position="top-right" />
-    </main>
+    </div>
   );
 }

@@ -48,7 +48,7 @@ const Contact = () => {
 
   return (
     <div className="my-3 bg-neutral-300 text-center rounded-3xl">
-      <div className="text-lg pt-5">
+      <div className="text-base md:text-lg px-5 pt-5">
         ご連絡の際は以下のフォームまたは各SNSのDMからどうぞ！
       </div>
       <form
@@ -59,7 +59,7 @@ const Contact = () => {
           type="text"
           {...register('name', { required: '名前は必須項目です' })}
           placeholder="氏名"
-          className="m-2 w-1/3 rounded focus:outline-gray-500"
+          className="m-2 w-full md:w-1/3 rounded focus:outline-gray-500"
         />
         <span className="text-red-500 text-left w-1/3">
           {errors.name?.message}
@@ -68,14 +68,14 @@ const Contact = () => {
           type="email"
           {...register('email', { required: 'メールアドレスは必須項目です' })}
           placeholder="メールアドレス"
-          className="m-2 w-1/3 rounded focus:outline-gray-500"
+          className="m-2 w-full md:w-1/3 rounded focus:outline-gray-500"
         />
         <span className="text-red-500 text-left w-1/3">
           {errors.email?.message}
         </span>
         <textarea
           {...register('body', { required: 'お問い合わせ内容は必須項目です' })}
-          className="m-2 w-1/3 rounded focus:outline-gray-500"
+          className="m-2 w-full md:w-1/3 rounded focus:outline-gray-500"
           placeholder="お問い合わせ内容"
         ></textarea>
         <span className="text-red-500 text-left w-1/3">
@@ -84,7 +84,7 @@ const Contact = () => {
         <input
           type="submit"
           value="送信"
-          className="m-2 w-1/5 bg-accent text-primary font-semibold rounded-full shadow-lg hover:bg-orange-300"
+          className="m-2 w-2/3 md:w-1/5 bg-accent text-primary font-semibold rounded-full shadow-lg hover:bg-orange-300"
         />
       </form>
       {/* SNSアイコン */}
