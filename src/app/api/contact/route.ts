@@ -34,7 +34,7 @@ export const POST = async (req: Request, res: NextResponse) => {
 
   const msg = await trasporter.sendMail(toHostMailData, function (err, info) {
     if (err) return err;
-    else return info
+    else return info;
   });
 
   return NextResponse.json({ message: msg }, { status: 200 });
