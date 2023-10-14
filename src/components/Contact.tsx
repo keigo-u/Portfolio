@@ -1,4 +1,6 @@
 'use client';
+import twitterIcon from '../../public/images/icons8-twitterx-96.png'
+import instagramIcon from '../../public/images/icons8-インスタグラム-96.png'
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -91,7 +93,7 @@ const Contact = () => {
       <div className="px-5 pb-5 flex justify-center">
         <a href="https://twitter.com/keigoQ4AXfu7z">
           <Image
-            src="/icons8-twitterx-96.png"
+            src={twitterIcon}
             alt="twitter"
             width={70}
             height={70}
@@ -99,7 +101,7 @@ const Contact = () => {
         </a>
         <a href="https://www.instagram.com/k5.u_555/">
           <Image
-            src="/icons8-インスタグラム-96.png"
+            src={instagramIcon}
             alt="instagram"
             width={70}
             height={70}
