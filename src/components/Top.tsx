@@ -1,10 +1,10 @@
 'use client';
 import Image from 'next/image';
-import iconImage from '../../public/icon.jpg';
-import jisui6Image from '../../public/jisui6.png';
-import soramojiImage from '../../public/soramoji.jpg';
-import rmImage from '../../public/reportmanager_connected.png';
-import vfImage from '../../public/virtualfitting_icon.png';
+import iconImage from '../../public/images/icon.jpg';
+import jisui6Image from '../../public/images/jisui6.png';
+import soramojiImage from '../../public/images/soramoji.jpg';
+import rmImage from '../../public/images/reportmanager_connected.png';
+import vfImage from '../../public/images/virtualfitting_icon.png';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/css';
 
