@@ -5,6 +5,9 @@ import jisui6Image from '../../public/images/jisui6.png';
 import soramojiImage from '../../public/images/soramoji.jpg';
 import rmImage from '../../public/images/reportmanager_connected.png';
 import vfImage from '../../public/images/virtualfitting_icon.png';
+import iconTwitter from '../../public/images/icons8-twitterx-96.png'
+import iconInstagram from '../../public/images/icons8-インスタグラム-96.png'
+import iconGithub from '../../public/images/icons8-github-100.png'
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/css';
 
@@ -94,7 +97,7 @@ const Top = () => {
             rel="noreferrer noopener"
           >
             <Image
-              src="/icons8-twitterx-96.png"
+              src={iconTwitter}
               width={80}
               height={80}
               alt="twitterIcon"
@@ -109,7 +112,7 @@ const Top = () => {
             rel="noreferrer noopener"
           >
             <Image
-              src="/icons8-インスタグラム-96.png"
+              src={iconInstagram}
               width={80}
               height={80}
               alt="instagramIcon"
@@ -124,7 +127,7 @@ const Top = () => {
             rel="noreferrer noopener"
           >
             <Image
-              src="/icons8-github-100.png"
+              src={iconGithub}
               width={80}
               height={80}
               alt="githubIcon"

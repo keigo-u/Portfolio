@@ -5,6 +5,18 @@ import jisui6Image from '../../public/images/jisui6.png';
 import soramojiImage from '../../public/images/soramoji.jpg';
 import rmImage from '../../public/images/reportmanager_connected.png';
 import vfImage from '../../public/images/virtualfitting_icon.png';
+import iconPhp from '../../public/images/icons8-php-96.png';
+import iconLaravel from '../../public/images/icons8-ララヴェル-96.png';
+import iconReact from '../../public/images/icons8-react-native-96.png';
+import iconTS from '../../public/images/icons8-typescript-96.png';
+import iconHeroku from '../../public/images/icons8-heroku-96.png';
+import iconMysql from '../../public/images/icons8-mysql-ロゴ-96.png';
+import iconEjs from '../../public/images/icons8-ejs-96.png';
+import iconTF from '../../public/images/icons8-tensorflow-96.png';
+import iconAws from '../../public/images/icons8-アマゾンウェブサービス-96.png';
+import iconSwiftUI from '../../public/images/icons8-swiftui-96.png';
+import iconMongoDB from '../../public/images/icons8-mongodb-96.png';
+import iconSwift from '../../public/images/icons8-swift-96.png';
 
 const Works = () => {
   return (
@@ -16,42 +28,12 @@ const Works = () => {
             <div className="text-3xl text-secondary font-bold">Jisui6</div>
             <div className="md:flex md:justify-around m-2">
               <div className="flex flex-wrap items-start">
-                <Image
-                  src="/icons8-php-96.png"
-                  width={50}
-                  height={50}
-                  alt="php"
-                />
-                <Image
-                  src="/icons8-ララヴェル-96.png"
-                  width={50}
-                  height={50}
-                  alt="laravel"
-                />
-                <Image
-                  src="/icons8-react-native-96.png"
-                  width={50}
-                  height={50}
-                  alt="react"
-                />
-                <Image
-                  src="/icons8-typescript-96.png"
-                  width={50}
-                  height={50}
-                  alt="typescript"
-                />
-                <Image
-                  src="/icons8-heroku-96.png"
-                  width={50}
-                  height={50}
-                  alt="heroku"
-                />
-                <Image
-                  src="/icons8-mysql-ロゴ-96.png"
-                  width={50}
-                  height={50}
-                  alt="mysql"
-                />
+                <Image src={iconPhp} width={50} height={50} alt="php" />
+                <Image src={iconLaravel} width={50} height={50} alt="laravel" />
+                <Image src={iconReact} width={50} height={50} alt="react" />
+                <Image src={iconTS} width={50} height={50} alt="typescript" />
+                <Image src={iconHeroku} width={50} height={50} alt="heroku" />
+                <Image src={iconMysql} width={50} height={50} alt="mysql" />
               </div>
               <Image
                 src={jisui6Image}
@@ -92,30 +74,10 @@ const Works = () => {
             <div className="text-3xl text-secondary font-bold">Soramoji</div>
             <div className="md:flex md:justify-around m-2">
               <div className="flex flex-wrap items-start">
-                <Image
-                  src="/icons8-typescript-96.png"
-                  width={50}
-                  height={50}
-                  alt="typescript"
-                />
-                <Image
-                  src="/icons8-ejs-96.png"
-                  width={50}
-                  height={50}
-                  alt="ejs"
-                />
-                <Image
-                  src="/icons8-tensorflow-96.png"
-                  width={50}
-                  height={50}
-                  alt="tensorflow"
-                />
-                <Image
-                  src="/icons8-アマゾンウェブサービス-96.png"
-                  width={50}
-                  height={50}
-                  alt="aws"
-                />
+                <Image src={iconTS} width={50} height={50} alt="typescript" />
+                <Image src={iconEjs} width={50} height={50} alt="ejs" />
+                <Image src={iconTF} width={50} height={50} alt="tensorflow" />
+                <Image src={iconAws} width={50} height={50} alt="aws" />
               </div>
               <Image
                 src={soramojiImage}
@@ -157,18 +119,8 @@ const Works = () => {
             </div>
             <div className="md:flex md:justify-around m-2">
               <div className="flex flex-wrap items-start">
-                <Image
-                  src="/icons8-swiftui-96.png"
-                  width={50}
-                  height={50}
-                  alt="swiftui"
-                />
-                <Image
-                  src="/icons8-mongodb-96.png"
-                  width={50}
-                  height={50}
-                  alt="mongodb"
-                />
+                <Image src={iconSwiftUI} width={50} height={50} alt="swiftui" />
+                <Image src={iconMongoDB} width={50} height={50} alt="mongodb" />
               </div>
               <Image src={rmImage} alt="ReportManager" className="rounded-md" />
             </div>
@@ -195,12 +147,7 @@ const Works = () => {
             </div>
             <div className="md:flex md:justify-around m-2">
               <div className="flex flex-wrap items-start">
-                <Image
-                  src="/icons8-swift-96.png"
-                  width={50}
-                  height={50}
-                  alt="swiftui"
-                />
+                <Image src={iconSwift} width={50} height={50} alt="swiftui" />
               </div>
               <Image
                 src={vfImage}
