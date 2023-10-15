@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 // お問い合わせメール送信API
 export const POST = async (req: Request, res: NextResponse) => {
@@ -15,6 +16,18 @@ export const POST = async (req: Request, res: NextResponse) => {
       pass: process.env.GMAIL_PASSWORD,
     },
   });
+
+  await new Promise<boolean>((resolve, reject) => {
+    trasporter.verify((err, success) => {
+      if(err) {
+        console.log(err)
+        reject(err)
+      } else {
+        console.log(success)
+        resolve(success)
+      }
+    })
+  })
 
   // 管理人が受け取るデータ
   const toHostMailData = {
@@ -32,10 +45,17 @@ export const POST = async (req: Request, res: NextResponse) => {
     `,
   };
 
-  const msg = await trasporter.sendMail(toHostMailData, function (err, info) {
-    if (err) return err;
-    else return info;
-  });
+  await new Promise<SMTPTransport.SentMessageInfo>((resolve, reject) => {
+    trasporter.sendMail(toHostMailData, function (err, info) {
+      if (err) {
+        console.log(err);
+        reject(err)
+      } else {
+        console.log(info);
+        resolve(info)
+      }
+    });
+  })
 
-  return NextResponse.json({ message: msg }, { status: 200 });
+  return NextResponse.json({ message: 'OK' }, { status: 200 });
 };
